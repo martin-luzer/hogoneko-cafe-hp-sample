@@ -31,7 +31,7 @@ ul, ol { list-style: none; }
 @media (hover: hover) and (pointer: fine) { .btn:hover { background: #6a4c38; } .btn--ghost:hover, .btn--line:hover { background: var(--honey2); } }
 
 .header { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; gap: 28px; padding: 16px var(--gutter); transition: background-color .4s ease, padding .4s var(--ease-out); }
-.header.is-solid { background: rgba(255,248,238,.94); backdrop-filter: blur(10px); padding-block: 10px; box-shadow: 0 1px 0 rgba(74,52,38,.08); }
+.header.is-solid { background: rgba(255,248,238,.94); padding-block: 10px; box-shadow: 0 1px 0 rgba(74,52,38,.08); }
 .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--hand); font-size: 22px; }
 .logo small { font-family: var(--jp); font-size: 11px; color: var(--muted); }
 .logo_paw { width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 50% 66%, var(--honey) 32%, transparent 33%), radial-gradient(circle at 22% 34%, var(--honey) 14%, transparent 15%), radial-gradient(circle at 50% 20%, var(--honey) 14%, transparent 15%), radial-gradient(circle at 78% 34%, var(--honey) 14%, transparent 15%); }
@@ -146,7 +146,7 @@ section { padding-block: clamp(88px, 10vw, 150px); }
   .cat_name small { display: block; margin: 0; }
   .cat_more, .cat::after { margin-inline: 4px; }
   .adopt_list { grid-template-columns: 1fr; }
-  .spBar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,248,238,.95); backdrop-filter: blur(10px); box-shadow: 0 -1px 0 rgba(74,52,38,.1); transform: translateY(110%); transition: transform .45s var(--ease-out); }
+  .spBar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,248,238,.95); box-shadow: 0 -1px 0 rgba(74,52,38,.1); transform: translateY(110%); transition: transform .45s var(--ease-out); }
   .spBar.is-on { transform: none; }
   .spBar a { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 14px; box-shadow: inset 0 0 0 1.5px var(--brown); }
   .spBar a + a { background: var(--brown); color: var(--cream); box-shadow: none; }
@@ -270,3 +270,35 @@ html:not(.js) .loader, .is-reduced .loader { display: none; }
 
 @media (max-width: 760px) { .hero .peek--hero { bottom: auto; } }
 @media (max-width: 760px) { .peek--hero { width: 84px; height: 49px; top: 19px; right: 22px; } }
+
+/* ===== 軽量版：動きはCSSで、見えている間だけ ===== */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+[id] { scroll-margin-top: 72px; }
+.header.is-solid, .spBar { background: rgba(255,248,238,.97); }
+
+/* スクロールの足あと：ぽんと押されて、ゆっくり消える */
+.tpaw { opacity: 0; scale: 1; }
+.tpaw.is-on { animation: pawStep 1.8s ease-out forwards; }
+@keyframes pawStep { 0% { opacity: 0; scale: 1.6; } 10% { opacity: .9; scale: 1; } 70% { opacity: .9; } 100% { opacity: 0; } }
+
+/* まばたき（のぞく猫・フッターの猫） */
+.peek .eyes, .sit_eyes { transform-box: fill-box; transform-origin: 50% 50%; }
+.is-live .eyes, .is-live .sit_eyes { animation: blink 6s infinite; }
+@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 94% { transform: scaleY(.1); } 96% { transform: scaleY(1); } }
+
+/* フッターの猫のしっぽ */
+.sitter_tail { transform-origin: 10% 95%; }
+.sitter.is-live .sitter_tail { animation: tail 2.4s ease-in-out infinite; }
+@keyframes tail { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(14deg); } }
+
+/* 寝ている猫の zzz */
+.sleeper.is-live span { animation: zzz 3s ease-out infinite; }
+.sleeper.is-live span:nth-of-type(2) { animation-delay: 1s; }
+.sleeper.is-live span:nth-of-type(3) { animation-delay: 2s; }
+@keyframes zzz { 0% { opacity: 0; transform: translate(0, 0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(14px, -34px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .is-live .eyes, .is-live .sit_eyes, .sitter.is-live .sitter_tail, .sleeper.is-live span { animation: none; }
+  .sleeper span { opacity: 1; }
+}
