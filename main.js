@@ -23,8 +23,6 @@
     }
     return $$('.paw', box);
   };
-  const heroPaws = makePaws($('.paws--hero'), 9);
-  const adoptPaws = makePaws($('.paws--adopt'), 12);
 
   const loader = $('.loader');
   const hideLoader = () => loader && loader.classList.add('is-done');
@@ -58,8 +56,7 @@
     .to('.header', { opacity: 1, duration: 0.6 }, 2.2)
     // 写真のふちから猫がのぞく
     .fromTo('.peek--hero', { yPercent: 100 }, { yPercent: 0, duration: 0.7, ease: 'back.out(2)' }, 2.6)
-    // 足あとが、ぽん、ぽん、と歩いてくる
-    .fromTo(heroPaws, { opacity: 0, scale: 0.3 }, { opacity: 0.85, scale: 1, duration: 0.3, ease: 'back.out(3)', stagger: 0.12 }, 2.8);
+;
 
   // のぞく猫は、ときどきまばたき
   $$('.peek .eyes').forEach((e) => gsap.to(e, { scaleY: 0.1, transformOrigin: '50% 50%', duration: 0.08, yoyo: true, repeat: 1, repeatDelay: 0, delay: 4, ease: 'none', onComplete() { this.delay(2 + Math.random() * 3).restart(true); } }));
@@ -75,8 +72,6 @@
   // 写真：丸から広がる（猫の瞳がひらくように）
   $$('[data-reveal]').forEach((el) => gsap.fromTo(el, { clipPath: 'circle(8% at 50% 60%)' }, { clipPath: 'circle(75% at 50% 50%)', duration: 1.4, ease: 'power3.inOut', clearProps: 'clipPath', scrollTrigger: { trigger: el, start: 'top 80%', once: true } }));
 
-  // 里親の流れ：スクロールに合わせて足あとが1つずつ増えていく
-  gsap.fromTo(adoptPaws, { opacity: 0, scale: 0.3 }, { opacity: 0.8, scale: 1, ease: 'none', stagger: 0.5, scrollTrigger: { trigger: '.adopt', start: 'top 75%', end: 'bottom 60%', scrub: 0.5 } });
 
   // 数字：数え上げ
   $$('[data-count]').forEach((el) => {
@@ -86,7 +81,35 @@
 
   // 寝ている猫の「zzz」と、フッターの猫のしっぽ
   $$('.sleeper span').forEach((z, i) => gsap.fromTo(z, { opacity: 0, y: 0, x: 0 }, { opacity: 1, y: -34, x: 14, duration: 2.4, ease: 'sine.out', repeat: -1, delay: i * 0.8, keyframes: { opacity: [0, 1, 0] } }));
-  gsap.to('.sitter_tail', { rotate: 18, transformOrigin: '8% 92%', duration: 1.1, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.fromTo('.sitter_tail', { rotate: -6 }, { rotate: 14, transformOrigin: '10% 95%', duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.to('.sit_eyes', { scaleY: 0.12, transformOrigin: '50% 60px', duration: 0.09, yoyo: true, repeat: 1, repeatDelay: 0, delay: 2.5, onComplete() { this.delay(2.5 + Math.random() * 2.5).restart(true); } });
+
+  // ---------- スクロールに合わせて、肉球がペタペタ歩く ----------
+  // 下へスクロールすると下向き、上へ戻すと上向きに、ページの右側へ足あとを付けていく
+  const trail = document.createElement('div'); trail.className = 'trail'; trail.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(trail);
+  let lastY = scrollY, acc = 0, step = 0;
+  const STRIDE = 120;
+  const stamp = (dir) => {
+    const mobile = innerWidth < 760;
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    p.setAttribute('class', 'tpaw'); p.innerHTML = '<use href="#i-paw"/>';
+    const side = step++ % 2 ? 1 : -1;                       // 右足・左足を交互に
+    const x = innerWidth - (mobile ? 22 : 48) + side * (mobile ? 7 : 14);
+    const y = scrollY + innerHeight * (dir > 0 ? 0.68 : 0.32);
+    p.style.left = `${x}px`; p.style.top = `${y}px`;
+    p.style.rotate = `${(dir > 0 ? 180 : 0) + side * -10}deg`;
+    trail.appendChild(p);
+    gsap.timeline({ onComplete: () => p.remove() })
+      .fromTo(p, { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 0.9, duration: 0.18, ease: 'power3.out' })
+      .to(p, { opacity: 0, duration: 1.2, ease: 'power1.in' }, 1.4);
+  };
+  addEventListener('scroll', () => {
+    const y = scrollY, d = y - lastY; lastY = y;
+    if (Math.sign(d) !== Math.sign(acc)) acc = 0;           // 向きが変わったら歩幅をリセット
+    acc += d;
+    while (Math.abs(acc) >= STRIDE) { stamp(Math.sign(acc)); acc -= Math.sign(acc) * STRIDE; }
+  }, { passive: true });
 
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

@@ -171,20 +171,26 @@ body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org
 .loader p { font-family: var(--hand); font-size: 15px; color: var(--muted); }
 html:not(.js) .loader, .is-reduced .loader { display: none; }
 
-/* 猫耳つきのボタン：乗せると耳がぴくっ */
-.btn--ear { position: relative; overflow: visible; }
-.btn--ear::before, .btn--ear::after { content: ""; position: absolute; top: -9px; width: 18px; height: 16px; background: inherit; clip-path: polygon(50% 0, 100% 100%, 0 100%); transition: transform .25s var(--ease-out); transform-origin: 50% 100%; }
-.btn--ear::before { left: 18%; transform: rotate(-14deg); }
-.btn--ear::after { right: 18%; transform: rotate(14deg); }
-.btn--ghost.btn--ear::before, .btn--ghost.btn--ear::after { background: rgba(255,248,238,.9); }
-.btn--line.btn--ear::before, .btn--line.btn--ear::after { background: var(--brown); }
-.contact .btn--line.btn--ear::before, .contact .btn--line.btn--ear::after { background: var(--cream); }
+/* ボタン：乗せると、後ろから猫が顔を出し、肉球がぽんと押される */
+.btn--peek { position: relative; isolation: isolate; background: transparent !important; overflow: visible; }
+.btn--peek::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; background: var(--brown); transition: background-color .25s ease; }
+.btn--peek::before { content: ""; position: absolute; z-index: -2; left: 50%; top: 6px; width: 56px; height: 40px; margin-left: -28px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 56'%3E%3Cpath d='M12 40 14 6l18 14M68 40 66 6 48 20' fill='%23f3b94d' stroke='%234a3426' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M18 18 19 11l6 5M62 18l-1-7-6 5' fill='%23f4b7a8'/%3E%3Cellipse cx='40' cy='40' rx='30' ry='24' fill='%23f3b94d' stroke='%234a3426' stroke-width='3'/%3E%3Cellipse cx='29' cy='38' rx='3.4' ry='4.6' fill='%234a3426'/%3E%3Cellipse cx='51' cy='38' rx='3.4' ry='4.6' fill='%234a3426'/%3E%3Cpath d='M37 45h6l-3 3z' fill='%23e07f6d'/%3E%3C/svg%3E") center / contain no-repeat; transform: translateY(0); transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+.btn--sm.btn--peek::before { width: 40px; height: 28px; margin-left: -20px; top: 6px; }
+.btn--ghost.btn--peek { color: var(--brown); }
+.btn--ghost.btn--peek::after { background: #fff8ee; }
+.btn--line.btn--peek::after { background: transparent; box-shadow: inset 0 0 0 1.5px var(--brown); }
+.contact .btn--peek::after { background: var(--honey); }
+.contact .btn--line.btn--peek::after { background: transparent; box-shadow: inset 0 0 0 1.5px var(--cream); }
+.contact .btn--line.btn--peek::before { display: none; }
+.btn--peek .ico { transition: transform .2s var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
-  .btn--ear:hover::before { animation: earL .5s var(--ease-out); }
-  .btn--ear:hover::after { animation: earR .5s var(--ease-out) .05s; }
+  .btn--peek:hover::before { transform: translateY(-88%); }
+  .btn--peek:hover::after { background: #6a4c38; }
+  .btn--ghost.btn--peek:hover::after { background: var(--honey2); }
+  .contact .btn--peek:hover::after { background: #f6c870; }
+  .btn--peek:hover .ico { animation: stamp .45s var(--ease-out); }
 }
-@keyframes earL { 0%,100% { transform: rotate(-14deg); } 40% { transform: rotate(-32deg) scaleY(.85); } }
-@keyframes earR { 0%,100% { transform: rotate(14deg); } 40% { transform: rotate(32deg) scaleY(.85); } }
+@keyframes stamp { 0% { transform: scale(1); } 35% { transform: scale(1.45) rotate(-12deg); } 60% { transform: scale(.85); } 100% { transform: scale(1); } }
 
 /* 写真のふちからのぞく猫 */
 .peek { position: absolute; width: 120px; height: 70px; color: var(--honey); overflow: visible; pointer-events: none; }
@@ -221,15 +227,16 @@ html:not(.js) .loader, .is-reduced .loader { display: none; }
 .sleeper span { position: absolute; left: 92px; top: 8px; font-family: var(--hand); font-size: 16px; color: var(--muted); opacity: 0; }
 .sleeper span:nth-of-type(3) { font-size: 22px; }
 
-/* フッターの猫：しっぽが揺れる */
-.footer { position: relative; }
-.sitter { position: relative; width: 80px; height: 110px; margin: -110px auto 16px; color: var(--brown); }
-.sitter_body { width: 80px; height: 110px; fill: currentColor; }
-.sitter_tail { position: absolute; left: 58px; bottom: 2px; width: 54px; height: 54px; color: var(--brown); }
-.contact { padding-bottom: clamp(120px, 12vw, 180px); }
+/* フッターの猫：はっきり猫に見えるすわり姿。しっぽが揺れる */
+.footer { position: relative; padding-top: 40px; }
+.sitter { position: relative; width: 132px; height: 148px; margin: 0 auto 10px; }
+.sitter_body { position: relative; z-index: 1; width: 132px; height: 148px; }
+.sitter_tail { position: absolute; z-index: 0; left: 92px; bottom: 4px; width: 58px; height: 74px; }
+.sitter::after { content: ""; position: absolute; left: -40px; right: -40px; bottom: 0; height: 3px; border-radius: 3px; background: #e6cfa6; }
+
 
 @media (max-width: 760px) {
-  .peek--hero { right: 28px; bottom: 16px; width: 88px; height: 52px; }
+  .peek--hero { right: 30px; bottom: auto; top: 27px; width: 72px; height: 42px; z-index: 0; }
   .paws--hero { display: none; }
   .cat_ears::before, .cat_ears::after { width: 24px; height: 16px; }
   .cat_ears { top: -10px; }
@@ -238,3 +245,28 @@ html:not(.js) .loader, .is-reduced .loader { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .paw { opacity: .8; }
 }
+
+/* スクロールの足あと */
+.trail { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 40; pointer-events: none; }
+.tpaw { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; color: #c98a1d; fill: currentColor; filter: drop-shadow(0 1px 0 rgba(255,255,255,.6)); }
+@media (max-width: 760px) { .tpaw { width: 24px; height: 24px; margin: -12px 0 0 -12px; } }
+
+/* v5：仕上げ */
+.nb { display: inline-block; }
+.peek--head { color: inherit; width: 108px; height: 63px; margin: -40px auto 2px; }
+.peek--hero { width: 132px; height: 77px; }
+.price_wrap { position: relative; }
+.sleeper { position: absolute; z-index: 2; right: 28px; top: -50px; width: 140px; height: 70px; margin: 0; }
+.sleeper svg { width: 140px; height: 70px; }
+.sleeper span { left: 112px; top: -4px; color: var(--brown); }
+.adopt_list li { padding-top: 30px; }
+.adopt_ico { position: absolute; right: 20px; top: 24px; width: 40px; height: 40px; color: var(--honey2); }
+.adopt_list li:hover .adopt_ico { color: var(--honey); }
+@media (max-width: 760px) {
+  .sleeper { right: 16px; top: -42px; width: 110px; height: 55px; }
+  .sleeper svg { width: 110px; height: 55px; }
+  .sleeper span { left: 86px; }
+}
+
+@media (max-width: 760px) { .hero .peek--hero { bottom: auto; } }
+@media (max-width: 760px) { .peek--hero { width: 84px; height: 49px; top: 19px; right: 22px; } }

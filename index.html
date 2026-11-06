@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=8">
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('is-reduced');</script>
 </head>
 <body>
@@ -21,30 +21,55 @@
   </symbol>
   <!-- のぞく猫の顔 -->
   <symbol id="cat-peek" viewBox="0 0 120 70">
-    <path d="M14 70V34L22 6l20 18c6-2 12-3 18-3s12 1 18 3L98 6l8 28v36z" fill="currentColor"/>
-    <g class="eyes" fill="#4a3426">
-      <ellipse cx="44" cy="44" rx="5" ry="6"/><ellipse cx="76" cy="44" rx="5" ry="6"/>
-    </g>
-    <path d="M56 54l4 3 4-3" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-    <g stroke="#4a3426" stroke-width="1.6" stroke-linecap="round"><path d="M30 52H14M30 57l-14 4M90 52h16M90 57l14 4"/></g>
+    <path d="M18 72 20 14l24 18M102 72 100 14 76 32" fill="#f3b94d" stroke="#4a3426" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M26 30 27 21l9 7M94 30l-1-9-9 7" fill="#f4b7a8"/>
+    <path d="M14 72C14 44 34 28 60 28s46 16 46 44z" fill="#f3b94d" stroke="#4a3426" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M50 34q2 6 0 10M60 32v11M70 34q-2 6 0 10" stroke="#d99a2b" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <g class="eyes"><ellipse cx="44" cy="54" rx="4.6" ry="6.4" fill="#4a3426"/><ellipse cx="76" cy="54" rx="4.6" ry="6.4" fill="#4a3426"/><circle cx="45.6" cy="51.4" r="1.6" fill="#fff"/><circle cx="77.6" cy="51.4" r="1.6" fill="#fff"/></g>
+    <path d="M56 62h8l-4 4z" fill="#e07f6d"/>
+    <g stroke="#4a3426" stroke-width="1.6" stroke-linecap="round"><path d="M34 62 16 59M34 67 16 69M86 62l18-3M86 67l18 2"/></g>
   </symbol>
   <!-- 丸くなって寝る猫 -->
-  <symbol id="cat-sleep" viewBox="0 0 140 70">
-    <path d="M10 62c0-24 22-40 52-40 10 0 18 2 24 5l8-12 6 14c14 6 24 18 24 33z" fill="currentColor"/>
-    <path d="M124 62c8 0 12-6 6-10" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-    <path d="M88 44q5 4 10 0M104 46q4 3 8 0" fill="none" stroke="#4a3426" stroke-width="2" stroke-linecap="round"/>
+  <symbol id="cat-sleep" viewBox="0 0 160 80">
+    <path d="M128 70c18 0 24-16 10-22" fill="none" stroke="#4a3426" stroke-width="14" stroke-linecap="round"/>
+    <path d="M128 70c18 0 24-16 10-22" fill="none" stroke="#f3b94d" stroke-width="8" stroke-linecap="round"/>
+    <path d="M16 76c0-30 26-48 60-48 30 0 54 16 56 48z" fill="#f3b94d" stroke="#4a3426" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M60 34q4 8 0 14M76 31q3 8 0 15M92 34q-3 8 0 14" stroke="#d99a2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M22 54 20 28l16 10M50 40 52 24l12 12" fill="#f3b94d" stroke="#4a3426" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M26 58q4 4 8 0M44 58q4 4 8 0" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linecap="round"/>
+    <ellipse cx="38" cy="66" rx="9" ry="5" fill="#fff8ee"/>
   </symbol>
   <!-- すわる猫（しっぽが揺れる） -->
-  <symbol id="cat-sit" viewBox="0 0 80 110">
-    <path d="M22 108c-6-24-4-50 6-64-6-6-8-16-6-26l8-14 10 12h8l10-12 8 14c2 10 0 20-6 26 10 14 12 40 6 64z" fill="currentColor"/>
-    <g class="eyes" fill="#fff8ee"><circle cx="32" cy="30" r="3"/><circle cx="48" cy="30" r="3"/></g>
+  <symbol id="cat-sit" viewBox="0 0 160 180">
+    <!-- からだ -->
+    <path d="M44 176c-10-40-2-82 36-86 38 4 46 46 36 86z" fill="#f3b94d" stroke="#4a3426" stroke-width="3" stroke-linejoin="round"/>
+    <ellipse cx="80" cy="128" rx="17" ry="27" fill="#fff8ee"/>
+    <!-- 前足 -->
+    <rect x="59" y="148" width="17" height="30" rx="8.5" fill="#f3b94d" stroke="#4a3426" stroke-width="3"/>
+    <rect x="84" y="148" width="17" height="30" rx="8.5" fill="#f3b94d" stroke="#4a3426" stroke-width="3"/>
+    <path d="M61 170h13M86 170h13" stroke="#fff8ee" stroke-width="6" stroke-linecap="round"/>
+    <!-- 耳 -->
+    <path d="M46 46 50 8l26 22z" fill="#f3b94d" stroke="#4a3426" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M114 46 110 8 84 30z" fill="#f3b94d" stroke="#4a3426" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M53 34 55 18l12 10z M107 34 105 18 93 28z" fill="#f4b7a8"/>
+    <!-- 頭 -->
+    <ellipse cx="80" cy="60" rx="40" ry="34" fill="#f3b94d" stroke="#4a3426" stroke-width="3"/>
+    <path d="M70 30q2 7 0 12M80 28v12M90 30q-2 7 0 12" stroke="#d99a2b" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <!-- 顔 -->
+    <g class="sit_eyes"><ellipse cx="64" cy="60" rx="4.5" ry="6.5" fill="#4a3426"/><ellipse cx="96" cy="60" rx="4.5" ry="6.5" fill="#4a3426"/><circle cx="65.5" cy="57.5" r="1.6" fill="#fff"/><circle cx="97.5" cy="57.5" r="1.6" fill="#fff"/></g>
+    <ellipse cx="54" cy="72" rx="6" ry="3.5" fill="#f4a08b" opacity=".55"/><ellipse cx="106" cy="72" rx="6" ry="3.5" fill="#f4a08b" opacity=".55"/>
+    <path d="M76 68h8l-4 4z" fill="#e07f6d"/>
+    <path d="M80 72q-3 5-7 3M80 72q3 5 7 3" fill="none" stroke="#4a3426" stroke-width="2" stroke-linecap="round"/>
+    <g stroke="#4a3426" stroke-width="1.6" stroke-linecap="round"><path d="M56 68 36 64M56 73 36 75M104 68l20-4M104 73l20 2"/></g>
   </symbol>
-  <symbol id="cat-tail" viewBox="0 0 60 60"><path d="M4 56c20 4 40-6 44-24S40 4 52 4" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></symbol>
+  <symbol id="cat-tail" viewBox="0 0 70 90"><path d="M8 84c30 2 52-14 52-38S44 12 56 6" fill="none" stroke="#4a3426" stroke-width="15" stroke-linecap="round"/><path d="M8 84c30 2 52-14 52-38S44 12 56 6" fill="none" stroke="#f3b94d" stroke-width="9" stroke-linecap="round"/><path d="M52 20c2-6 4-10 4-14" fill="none" stroke="#d99a2b" stroke-width="9" stroke-linecap="round"/></symbol>
   <!-- アイコン -->
   <symbol id="i-paw" viewBox="0 0 24 24"><g fill="currentColor"><ellipse cx="12" cy="16" rx="5.5" ry="4.6"/><circle cx="5" cy="10" r="2.4"/><circle cx="9.4" cy="5.6" r="2.4"/><circle cx="14.6" cy="5.6" r="2.4"/><circle cx="19" cy="10" r="2.4"/></g></symbol>
   <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z" fill="currentColor"/></symbol>
   <symbol id="i-fish" viewBox="0 0 24 24"><path d="M2 12c3-5 9-7 14-4l5-3-1 7 1 7-5-3c-5 3-11 1-14-4z" fill="currentColor"/><circle cx="8" cy="11" r="1.2" fill="#fff8ee"/></symbol>
   <symbol id="i-letter" viewBox="0 0 24 24"><path d="M3 6h18v12H3zm1 1 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-5 4v-4H4z" fill="currentColor"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21C5 15 2 12 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-3 7-10 13z" fill="currentColor"/></symbol>
   <symbol id="i-face" viewBox="0 0 24 24"><path d="M3 21V9l2-7 5 4h4l5-4 2 7v12z" fill="currentColor"/><g fill="#fff8ee"><circle cx="9" cy="13" r="1.4"/><circle cx="15" cy="13" r="1.4"/></g></symbol>
 </svg>
 
@@ -54,7 +79,7 @@
 <header class="header">
   <a class="logo" href="#top" aria-label="ひだまりのいえ トップへ"><svg class="ico logo_ico" aria-hidden="true"><use href="#i-face"/></svg>ひだまりのいえ<small>保護猫カフェ</small></a>
   <nav class="nav" aria-label="サイト内"><a href="#concept"><svg class="ico " aria-hidden="true"><use href="#i-house"/></svg>お店のこと</a><a href="#cats"><svg class="ico " aria-hidden="true"><use href="#i-paw"/></svg>ねこたち</a><a href="#price"><svg class="ico " aria-hidden="true"><use href="#i-fish"/></svg>料金・アクセス</a><a href="#contact"><svg class="ico " aria-hidden="true"><use href="#i-letter"/></svg>お問い合わせ</a></nav>
-  <a class="btn btn--sm btn--ear" href="#price">ご来店の前に</a>
+  <a class="btn btn--sm btn--peek" href="#price">ご来店の前に</a>
 </header>
 
 <main id="top">
@@ -62,12 +87,11 @@
   <section class="hero">
     <div class="hero_photo" data-open-photo><img src="photos/hero.jpg" alt="日の当たる棚でくつろぐ猫たち" width="1800" height="1012" fetchpriority="high"></div>
     <svg class="peek peek--hero" aria-hidden="true"><use href="#cat-peek"/></svg>
-    <div class="paws paws--hero" aria-hidden="true"></div>
     <div class="hero_body">
       <p class="hero_tag" data-open="1">2027年春 オープン予定</p>
       <h1 class="hero_copy" data-open="2"><span>ひだまりで、</span><span>あたらしい家族に</span><span>出会う場所。</span></h1>
       <p class="hero_lead" data-open="3">ここにいる猫たちは、みんな保護された子たちです。<br>のんびり過ごしながら、相性のいい子を見つけてください。</p>
-      <div class="hero_btns" data-open="4"><a class="btn btn--ear" href="#cats"><svg class="ico " aria-hidden="true"><use href="#i-paw"/></svg>ねこたちに会う</a><a class="btn btn--ghost btn--ear" href="#price"><svg class="ico " aria-hidden="true"><use href="#i-fish"/></svg>料金・アクセス</a></div>
+      <div class="hero_btns" data-open="4"><a class="btn btn--peek" href="#cats"><svg class="ico " aria-hidden="true"><use href="#i-paw"/></svg>ねこたちに会う</a><a class="btn btn--ghost btn--peek" href="#price"><svg class="ico " aria-hidden="true"><use href="#i-fish"/></svg>料金・アクセス</a></div>
     </div>
   </section>
 
@@ -78,7 +102,7 @@
       <div class="concept_body">
         <header class="secHead secHead--left" data-up>
           <p class="secHead_sub">お店のこと</p>
-          <h2 class="secHead_ja">カフェで過ごす時間が、<br>だれかの家族さがしになる。</h2>
+          <h2 class="secHead_ja">カフェで過ごす時間が、<br><span class="nb">だれかの家族さがしに</span><span class="nb">なる。</span></h2>
         </header>
         <p class="concept_text" data-up>ひだまりのいえは、地域の保護団体と一緒に運営する保護猫カフェです。お店でかかる入場料の一部は、猫たちのごはん代や病院代になります。</p>
         <ul class="concept_list" data-each>
@@ -115,18 +139,17 @@
       <p class="secHead_sub">里親になるには</p>
       <h2 class="secHead_ja">気になる子がいたら</h2>
     </header>
-    <div class="paws paws--adopt" aria-hidden="true"></div>
     <ol class="adopt_list" data-each>
-      <li data-up><b>1</b><h3>お店で会う</h3><p>何度か会いに来て、相性を確かめてください。</p></li>
-      <li data-up><b>2</b><h3>スタッフに相談</h3><p>暮らし方やおうちの様子を伺います。</p></li>
-      <li data-up><b>3</b><h3>おためし同居</h3><p>2週間ほど、おうちで一緒に暮らしてみます。</p></li>
-      <li data-up><b>4</b><h3>正式に家族へ</h3><p>譲渡の契約をして、新しい暮らしのはじまりです。</p></li>
+      <li data-up><b>1</b><svg class="adopt_ico" aria-hidden="true"><use href="#i-face"/></svg><h3>お店で会う</h3><p>何度か会いに来て、相性を確かめてください。</p></li>
+      <li data-up><b>2</b><svg class="adopt_ico" aria-hidden="true"><use href="#i-chat"/></svg><h3>スタッフに相談</h3><p>暮らし方やおうちの様子を伺います。</p></li>
+      <li data-up><b>3</b><svg class="adopt_ico" aria-hidden="true"><use href="#i-house"/></svg><h3>おためし同居</h3><p>2週間ほど、おうちで一緒に暮らしてみます。</p></li>
+      <li data-up><b>4</b><svg class="adopt_ico" aria-hidden="true"><use href="#i-heart"/></svg><h3>正式に家族へ</h3><p>譲渡の契約をして、新しい暮らしのはじまりです。</p></li>
     </ol>
   </section>
 
   <!-- 料金・アクセス -->
   <section class="price" id="price">
-    <div class="price_photo" data-reveal><img src="photos/inside.jpg" alt="床に座って猫をなでるお客さん" width="1800" height="1350" loading="lazy"></div>
+    <div class="price_wrap"><div class="sleeper" aria-hidden="true"><svg><use href="#cat-sleep"/></svg><span>z</span><span>z</span><span>Z</span></div><div class="price_photo" data-reveal><img src="photos/inside.jpg" alt="床に座って猫をなでるお客さん" width="1800" height="1350" loading="lazy"></div></div>
     <div class="price_body">
       <header class="secHead secHead--left" data-up>
         <p class="secHead_sub">料金・営業時間・アクセス</p>
@@ -140,7 +163,6 @@
         <div data-up><dt>おねがい</dt><dd>猫を抱き上げるのは、スタッフに声をかけてからにしてください。</dd></div>
       </dl>
       <p class="note">※料金・営業時間はサンプルです（税込表示の例）。</p>
-      <div class="sleeper" aria-hidden="true"><svg><use href="#cat-sleep"/></svg><span>z</span><span>z</span><span>Z</span></div>
     </div>
   </section>
 
@@ -149,7 +171,7 @@
       <p class="secHead_sub" data-up>お問い合わせ</p>
       <h2 class="contact_h" data-up>オープンのお知らせを、<br>いちばんに受け取る。</h2>
       <p class="contact_text" data-up>里親のご相談、ボランティア、取材のお問い合わせもこちらから。</p>
-      <div class="contact_btns" data-up><a class="btn btn--ear" href="#contact"><svg class="ico " aria-hidden="true"><use href="#i-letter"/></svg>お問い合わせフォーム</a><a class="btn btn--line btn--ear" href="#contact">Instagramを見る</a></div>
+      <div class="contact_btns" data-up><a class="btn btn--peek" href="#contact"><svg class="ico " aria-hidden="true"><use href="#i-letter"/></svg>お問い合わせフォーム</a><a class="btn btn--line btn--peek" href="#contact">Instagramを見る</a></div>
       <p class="note" data-up>※サンプルのため、ボタンは動きません。</p>
     </div>
   </section>
@@ -157,7 +179,7 @@
 </main>
 
 <footer class="footer">
-  <div class="sitter" aria-hidden="true"><svg class="sitter_body"><use href="#cat-sit"/></svg><svg class="sitter_tail"><use href="#cat-tail"/></svg></div>
+  <div class="sitter" aria-hidden="true"><svg class="sitter_tail"><use href="#cat-tail"/></svg><svg class="sitter_body"><use href="#cat-sit"/></svg></div>
   <p class="footer_logo">ひだまりのいえ</p>
   <p class="footer_note">このサイトは制作サンプルです。店名・猫・料金・住所はすべて架空で、写真はAIで生成しています。<br>本番では、トップ・お店のこと・ねこたち・料金アクセス・お問い合わせの4〜5ページに分けて制作します。</p>
   <p class="footer_copy">Sample design by シノブフジモト</p>
@@ -168,7 +190,7 @@
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="main.js?v=2"></script>
+<script src="main.js?v=5"></script>
 
 </body>
 </html>
