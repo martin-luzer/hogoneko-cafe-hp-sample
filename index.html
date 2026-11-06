@@ -9,26 +9,65 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=1">
+<link rel="stylesheet" href="style.css?v=2">
 <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('is-reduced');</script>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- 歩く猫（読み込み中・足あと用） -->
+  <symbol id="cat-walk" viewBox="0 0 120 70">
+    <path d="M18 34c0-10 10-16 26-16h34c6 0 9-6 9-10l5-6 3 9c6 2 9 7 9 13 0 7-5 11-11 12l-2 22h-7l-2-16H48l-4 16h-7l1-20c-8-1-15-1-20-4z" fill="currentColor"/>
+    <path d="M18 34c-6-2-12-10-10-20" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" class="tail"/>
+  </symbol>
+  <!-- のぞく猫の顔 -->
+  <symbol id="cat-peek" viewBox="0 0 120 70">
+    <path d="M14 70V34L22 6l20 18c6-2 12-3 18-3s12 1 18 3L98 6l8 28v36z" fill="currentColor"/>
+    <g class="eyes" fill="#4a3426">
+      <ellipse cx="44" cy="44" rx="5" ry="6"/><ellipse cx="76" cy="44" rx="5" ry="6"/>
+    </g>
+    <path d="M56 54l4 3 4-3" fill="none" stroke="#4a3426" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="#4a3426" stroke-width="1.6" stroke-linecap="round"><path d="M30 52H14M30 57l-14 4M90 52h16M90 57l14 4"/></g>
+  </symbol>
+  <!-- 丸くなって寝る猫 -->
+  <symbol id="cat-sleep" viewBox="0 0 140 70">
+    <path d="M10 62c0-24 22-40 52-40 10 0 18 2 24 5l8-12 6 14c14 6 24 18 24 33z" fill="currentColor"/>
+    <path d="M124 62c8 0 12-6 6-10" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M88 44q5 4 10 0M104 46q4 3 8 0" fill="none" stroke="#4a3426" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <!-- すわる猫（しっぽが揺れる） -->
+  <symbol id="cat-sit" viewBox="0 0 80 110">
+    <path d="M22 108c-6-24-4-50 6-64-6-6-8-16-6-26l8-14 10 12h8l10-12 8 14c2 10 0 20-6 26 10 14 12 40 6 64z" fill="currentColor"/>
+    <g class="eyes" fill="#fff8ee"><circle cx="32" cy="30" r="3"/><circle cx="48" cy="30" r="3"/></g>
+  </symbol>
+  <symbol id="cat-tail" viewBox="0 0 60 60"><path d="M4 56c20 4 40-6 44-24S40 4 52 4" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/></symbol>
+  <!-- アイコン -->
+  <symbol id="i-paw" viewBox="0 0 24 24"><g fill="currentColor"><ellipse cx="12" cy="16" rx="5.5" ry="4.6"/><circle cx="5" cy="10" r="2.4"/><circle cx="9.4" cy="5.6" r="2.4"/><circle cx="14.6" cy="5.6" r="2.4"/><circle cx="19" cy="10" r="2.4"/></g></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z" fill="currentColor"/></symbol>
+  <symbol id="i-fish" viewBox="0 0 24 24"><path d="M2 12c3-5 9-7 14-4l5-3-1 7 1 7-5-3c-5 3-11 1-14-4z" fill="currentColor"/><circle cx="8" cy="11" r="1.2" fill="#fff8ee"/></symbol>
+  <symbol id="i-letter" viewBox="0 0 24 24"><path d="M3 6h18v12H3zm1 1 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-face" viewBox="0 0 24 24"><path d="M3 21V9l2-7 5 4h4l5-4 2 7v12z" fill="currentColor"/><g fill="#fff8ee"><circle cx="9" cy="13" r="1.4"/><circle cx="15" cy="13" r="1.4"/></g></symbol>
+</svg>
+
+<!-- 読み込み中：猫が歩く -->
+<div class="loader" aria-hidden="true"><svg class="loader_cat"><use href="#cat-walk"/></svg><p>ねこたちを よんでいます…</p></div>
 
 <header class="header">
-  <a class="logo" href="#top" aria-label="ひだまりのいえ トップへ"><span class="logo_paw" aria-hidden="true"></span>ひだまりのいえ<small>保護猫カフェ</small></a>
-  <nav class="nav" aria-label="サイト内"><a href="#concept">お店のこと</a><a href="#cats">ねこたち</a><a href="#price">料金・アクセス</a><a href="#contact">お問い合わせ</a></nav>
-  <a class="btn btn--sm" href="#price">ご来店の前に</a>
+  <a class="logo" href="#top" aria-label="ひだまりのいえ トップへ"><svg class="ico logo_ico" aria-hidden="true"><use href="#i-face"/></svg>ひだまりのいえ<small>保護猫カフェ</small></a>
+  <nav class="nav" aria-label="サイト内"><a href="#concept"><svg class="ico " aria-hidden="true"><use href="#i-house"/></svg>お店のこと</a><a href="#cats"><svg class="ico " aria-hidden="true"><use href="#i-paw"/></svg>ねこたち</a><a href="#price"><svg class="ico " aria-hidden="true"><use href="#i-fish"/></svg>料金・アクセス</a><a href="#contact"><svg class="ico " aria-hidden="true"><use href="#i-letter"/></svg>お問い合わせ</a></nav>
+  <a class="btn btn--sm btn--ear" href="#price">ご来店の前に</a>
 </header>
 
 <main id="top">
 
   <section class="hero">
     <div class="hero_photo" data-open-photo><img src="photos/hero.jpg" alt="日の当たる棚でくつろぐ猫たち" width="1800" height="1012" fetchpriority="high"></div>
+    <svg class="peek peek--hero" aria-hidden="true"><use href="#cat-peek"/></svg>
+    <div class="paws paws--hero" aria-hidden="true"></div>
     <div class="hero_body">
       <p class="hero_tag" data-open="1">2027年春 オープン予定</p>
       <h1 class="hero_copy" data-open="2"><span>ひだまりで、</span><span>あたらしい家族に</span><span>出会う場所。</span></h1>
       <p class="hero_lead" data-open="3">ここにいる猫たちは、みんな保護された子たちです。<br>のんびり過ごしながら、相性のいい子を見つけてください。</p>
-      <div class="hero_btns" data-open="4"><a class="btn" href="#cats">ねこたちに会う</a><a class="btn btn--ghost" href="#price">料金・アクセス</a></div>
+      <div class="hero_btns" data-open="4"><a class="btn btn--ear" href="#cats"><svg class="ico " aria-hidden="true"><use href="#i-paw"/></svg>ねこたちに会う</a><a class="btn btn--ghost btn--ear" href="#price"><svg class="ico " aria-hidden="true"><use href="#i-fish"/></svg>料金・アクセス</a></div>
     </div>
   </section>
 
@@ -54,17 +93,18 @@
   <!-- ねこたち：カードを押すと性格がわかる -->
   <section class="cats" id="cats">
     <header class="secHead" data-up>
+      <svg class="peek peek--head" aria-hidden="true"><use href="#cat-peek"/></svg>
       <p class="secHead_sub">ねこたち</p>
       <h2 class="secHead_ja">いまお店にいる子たち</h2>
       <p class="cats_lead">カードを押すと、その子の性格がわかります。</p>
     </header>
     <ul class="cat_list" data-each>
-      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_photo"><img src="photos/cat-mikan.jpg" alt="茶トラのみかん" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">みかん<small>オス・2歳</small></span><span class="cat_more">人が大好きで、お客さんのひざに一番に乗りにいく甘えんぼう。ほかの猫とも仲良しです。</span></button></li>
-      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_photo"><img src="photos/cat-kuro.jpg" alt="黒猫のくろまめ" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">くろまめ<small>メス・1歳</small></span><span class="cat_more">はじめは隠れていますが、慣れるとずっとそばにいてくれます。静かなおうち向き。</span></button></li>
-      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_photo"><img src="photos/cat-hachi.jpg" alt="白黒のはちわれ" loading="lazy"></span><span class="cat_tag cat_tag--s">お店の看板猫</span><span class="cat_name">はちわれ<small>オス・6歳</small></span><span class="cat_more">いつもタワーのいちばん上でお昼寝。お店の様子を見守る、看板猫です。</span></button></li>
-      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_photo"><img src="photos/cat-mike.jpg" alt="三毛の子猫のおもち" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">おもち<small>メス・5か月</small></span><span class="cat_more">おもちゃを見るとダッシュ！ 元気いっぱいなので、遊んであげられるおうちが合いそう。</span></button></li>
-      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_photo"><img src="photos/cat-tora.jpg" alt="キジトラのごろう" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">ごろう<small>オス・9歳</small></span><span class="cat_more">落ち着いたおじいちゃん猫。なでられるのが好きで、のんびり暮らしたい方にぴったり。</span></button></li>
-      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_photo"><img src="photos/cat-yuki.jpg" alt="白い長毛のゆき" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">ゆき<small>メス・3歳</small></span><span class="cat_more">ふわふわの毛が自慢。ブラッシングされるとのどを鳴らします。</span></button></li>
+      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_ears" aria-hidden="true"></span><span class="nya" aria-hidden="true">にゃ</span><span class="cat_photo"><img src="photos/cat-mikan.jpg" alt="茶トラのみかん" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">みかん<small>オス・2歳</small></span><span class="cat_more">人が大好きで、お客さんのひざに一番に乗りにいく甘えんぼう。ほかの猫とも仲良しです。</span></button></li>
+      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_ears" aria-hidden="true"></span><span class="nya" aria-hidden="true">にゃ</span><span class="cat_photo"><img src="photos/cat-kuro.jpg" alt="黒猫のくろまめ" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">くろまめ<small>メス・1歳</small></span><span class="cat_more">はじめは隠れていますが、慣れるとずっとそばにいてくれます。静かなおうち向き。</span></button></li>
+      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_ears" aria-hidden="true"></span><span class="nya" aria-hidden="true">にゃ</span><span class="cat_photo"><img src="photos/cat-hachi.jpg" alt="白黒のはちわれ" loading="lazy"></span><span class="cat_tag cat_tag--s">お店の看板猫</span><span class="cat_name">はちわれ<small>オス・6歳</small></span><span class="cat_more">いつもタワーのいちばん上でお昼寝。お店の様子を見守る、看板猫です。</span></button></li>
+      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_ears" aria-hidden="true"></span><span class="nya" aria-hidden="true">にゃ</span><span class="cat_photo"><img src="photos/cat-mike.jpg" alt="三毛の子猫のおもち" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">おもち<small>メス・5か月</small></span><span class="cat_more">おもちゃを見るとダッシュ！ 元気いっぱいなので、遊んであげられるおうちが合いそう。</span></button></li>
+      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_ears" aria-hidden="true"></span><span class="nya" aria-hidden="true">にゃ</span><span class="cat_photo"><img src="photos/cat-tora.jpg" alt="キジトラのごろう" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">ごろう<small>オス・9歳</small></span><span class="cat_more">落ち着いたおじいちゃん猫。なでられるのが好きで、のんびり暮らしたい方にぴったり。</span></button></li>
+      <li data-up><button type="button" class="cat" aria-expanded="false"><span class="cat_ears" aria-hidden="true"></span><span class="nya" aria-hidden="true">にゃ</span><span class="cat_photo"><img src="photos/cat-yuki.jpg" alt="白い長毛のゆき" loading="lazy"></span><span class="cat_tag">家族募集中</span><span class="cat_name">ゆき<small>メス・3歳</small></span><span class="cat_more">ふわふわの毛が自慢。ブラッシングされるとのどを鳴らします。</span></button></li>
     </ul>
     <p class="note cats_note">※猫の名前・年齢・性格はサンプルです（写真はAI生成）。</p>
   </section>
@@ -75,6 +115,7 @@
       <p class="secHead_sub">里親になるには</p>
       <h2 class="secHead_ja">気になる子がいたら</h2>
     </header>
+    <div class="paws paws--adopt" aria-hidden="true"></div>
     <ol class="adopt_list" data-each>
       <li data-up><b>1</b><h3>お店で会う</h3><p>何度か会いに来て、相性を確かめてください。</p></li>
       <li data-up><b>2</b><h3>スタッフに相談</h3><p>暮らし方やおうちの様子を伺います。</p></li>
@@ -99,6 +140,7 @@
         <div data-up><dt>おねがい</dt><dd>猫を抱き上げるのは、スタッフに声をかけてからにしてください。</dd></div>
       </dl>
       <p class="note">※料金・営業時間はサンプルです（税込表示の例）。</p>
+      <div class="sleeper" aria-hidden="true"><svg><use href="#cat-sleep"/></svg><span>z</span><span>z</span><span>Z</span></div>
     </div>
   </section>
 
@@ -107,7 +149,7 @@
       <p class="secHead_sub" data-up>お問い合わせ</p>
       <h2 class="contact_h" data-up>オープンのお知らせを、<br>いちばんに受け取る。</h2>
       <p class="contact_text" data-up>里親のご相談、ボランティア、取材のお問い合わせもこちらから。</p>
-      <div class="contact_btns" data-up><a class="btn" href="#contact">お問い合わせフォーム</a><a class="btn btn--line" href="#contact">Instagramを見る</a></div>
+      <div class="contact_btns" data-up><a class="btn btn--ear" href="#contact"><svg class="ico " aria-hidden="true"><use href="#i-letter"/></svg>お問い合わせフォーム</a><a class="btn btn--line btn--ear" href="#contact">Instagramを見る</a></div>
       <p class="note" data-up>※サンプルのため、ボタンは動きません。</p>
     </div>
   </section>
@@ -115,6 +157,7 @@
 </main>
 
 <footer class="footer">
+  <div class="sitter" aria-hidden="true"><svg class="sitter_body"><use href="#cat-sit"/></svg><svg class="sitter_tail"><use href="#cat-tail"/></svg></div>
   <p class="footer_logo">ひだまりのいえ</p>
   <p class="footer_note">このサイトは制作サンプルです。店名・猫・料金・住所はすべて架空で、写真はAIで生成しています。<br>本番では、トップ・お店のこと・ねこたち・料金アクセス・お問い合わせの4〜5ページに分けて制作します。</p>
   <p class="footer_copy">Sample design by シノブフジモト</p>
@@ -125,13 +168,7 @@
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="main.js?v=1"></script>
-<script>
-// 猫のカードを押すと、性格の説明が開く
-document.querySelectorAll('.cat').forEach((c) => c.addEventListener('click', () => {
-  const open = c.getAttribute('aria-expanded') !== 'true';
-  c.setAttribute('aria-expanded', open);
-}));
-</script>
+<script src="main.js?v=2"></script>
+
 </body>
 </html>

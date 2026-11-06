@@ -155,3 +155,86 @@ section { padding-block: clamp(88px, 10vw, 150px); }
 @media (prefers-reduced-motion: reduce) {
   .js [data-up], .js [data-open], .js .header { opacity: 1; transform: none; }
 }
+
+/* ===== v2：猫らしさ ===== */
+.ico { width: 1.15em; height: 1.15em; vertical-align: -.18em; margin-right: .35em; fill: currentColor; }
+.logo_ico { width: 28px; height: 28px; color: var(--honey); margin-right: 2px; }
+.nav a .ico { color: #c98a1d; }
+
+/* 肉球と魚の透かし柄 */
+body { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='%23f3b94d' opacity='.13'%3E%3Cellipse cx='30' cy='36' rx='9' ry='7.5'/%3E%3Ccircle cx='19' cy='26' r='3.8'/%3E%3Ccircle cx='26' cy='19' r='3.8'/%3E%3Ccircle cx='34' cy='19' r='3.8'/%3E%3Ccircle cx='41' cy='26' r='3.8'/%3E%3Cpath d='M98 112c6-9 17-12 26-7l9-5-2 12 2 12-9-5c-9 5-20 2-26-7z'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* 読み込み中：猫が歩く */
+.loader { position: fixed; inset: 0; z-index: 100; background: var(--cream); display: grid; place-items: center; align-content: center; gap: 10px; clip-path: circle(150% at 50% 50%); }
+.loader.is-done { display: none; }
+.loader_cat { width: 120px; height: 70px; color: var(--brown); }
+.loader p { font-family: var(--hand); font-size: 15px; color: var(--muted); }
+html:not(.js) .loader, .is-reduced .loader { display: none; }
+
+/* 猫耳つきのボタン：乗せると耳がぴくっ */
+.btn--ear { position: relative; overflow: visible; }
+.btn--ear::before, .btn--ear::after { content: ""; position: absolute; top: -9px; width: 18px; height: 16px; background: inherit; clip-path: polygon(50% 0, 100% 100%, 0 100%); transition: transform .25s var(--ease-out); transform-origin: 50% 100%; }
+.btn--ear::before { left: 18%; transform: rotate(-14deg); }
+.btn--ear::after { right: 18%; transform: rotate(14deg); }
+.btn--ghost.btn--ear::before, .btn--ghost.btn--ear::after { background: rgba(255,248,238,.9); }
+.btn--line.btn--ear::before, .btn--line.btn--ear::after { background: var(--brown); }
+.contact .btn--line.btn--ear::before, .contact .btn--line.btn--ear::after { background: var(--cream); }
+@media (hover: hover) and (pointer: fine) {
+  .btn--ear:hover::before { animation: earL .5s var(--ease-out); }
+  .btn--ear:hover::after { animation: earR .5s var(--ease-out) .05s; }
+}
+@keyframes earL { 0%,100% { transform: rotate(-14deg); } 40% { transform: rotate(-32deg) scaleY(.85); } }
+@keyframes earR { 0%,100% { transform: rotate(14deg); } 40% { transform: rotate(32deg) scaleY(.85); } }
+
+/* 写真のふちからのぞく猫 */
+.peek { position: absolute; width: 120px; height: 70px; color: var(--honey); overflow: visible; pointer-events: none; }
+.peek--hero { right: calc(var(--gutter) + 80px); bottom: 32px; z-index: 1; }
+.hero { overflow: hidden; }
+.hero .peek--hero { bottom: 32px; }
+.secHead { position: relative; }
+.peek--head { position: relative; display: block; margin: -36px auto 0; width: 96px; height: 56px; color: var(--brown); }
+
+/* 足あと */
+.paws { position: relative; height: 40px; pointer-events: none; }
+.paws--hero { position: absolute; left: calc(var(--gutter) + 40%); right: calc(var(--gutter) + 230px); bottom: 44px; z-index: 1; }
+.paws--adopt { max-width: var(--max); margin: -20px auto 24px; height: 46px; }
+.paw { position: absolute; width: 22px; height: 22px; color: var(--honey); fill: currentColor; opacity: 0; }
+.paws--adopt .paw { color: #e7b04a; }
+
+/* 猫のカード：耳つき、押すと「にゃ」 */
+.cat { margin-top: 14px; }
+.cat_ears { position: absolute; left: 0; right: 0; top: -14px; height: 18px; pointer-events: none; }
+.cat_ears::before, .cat_ears::after { content: ""; position: absolute; top: 0; width: 34px; height: 22px; background: #fff; clip-path: polygon(50% 0, 100% 100%, 0 100%); transition: transform .3s var(--ease-out); transform-origin: 50% 100%; }
+.cat_ears::before { left: 16%; transform: rotate(-10deg); }
+.cat_ears::after { right: 16%; transform: rotate(10deg); }
+@media (hover: hover) and (pointer: fine) {
+  .cat:hover .cat_ears::before { transform: rotate(-22deg); }
+  .cat:hover .cat_ears::after { transform: rotate(22deg); }
+}
+.nya { position: absolute; z-index: 2; right: 14px; top: 18px; font-family: var(--hand); font-size: 18px; background: var(--brown); color: var(--cream); padding: 2px 12px; border-radius: 14px 14px 14px 2px; opacity: 0; transform: scale(.4) translateY(8px); transform-origin: 0 100%; pointer-events: none; }
+.cat.is-nya .nya { animation: nya 1.3s var(--ease-out); }
+@keyframes nya { 0% { opacity: 0; transform: scale(.4) translateY(8px); } 18% { opacity: 1; transform: scale(1.08) translateY(0); } 30% { transform: scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } }
+
+/* 寝ている猫と zzz */
+.sleeper { position: relative; width: 120px; height: 60px; margin-top: 20px; color: var(--honey); }
+.sleeper svg { width: 120px; height: 60px; fill: currentColor; }
+.sleeper span { position: absolute; left: 92px; top: 8px; font-family: var(--hand); font-size: 16px; color: var(--muted); opacity: 0; }
+.sleeper span:nth-of-type(3) { font-size: 22px; }
+
+/* フッターの猫：しっぽが揺れる */
+.footer { position: relative; }
+.sitter { position: relative; width: 80px; height: 110px; margin: -110px auto 16px; color: var(--brown); }
+.sitter_body { width: 80px; height: 110px; fill: currentColor; }
+.sitter_tail { position: absolute; left: 58px; bottom: 2px; width: 54px; height: 54px; color: var(--brown); }
+.contact { padding-bottom: clamp(120px, 12vw, 180px); }
+
+@media (max-width: 760px) {
+  .peek--hero { right: 28px; bottom: 16px; width: 88px; height: 52px; }
+  .paws--hero { display: none; }
+  .cat_ears::before, .cat_ears::after { width: 24px; height: 16px; }
+  .cat_ears { top: -10px; }
+  .nya { font-size: 14px; top: 12px; right: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paw { opacity: .8; }
+}
